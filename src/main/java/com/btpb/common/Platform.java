@@ -9,10 +9,22 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The {@code Platform} contains a singleton accessor
+ * to the AWS RDS context. Methods are exposed to
+ * transact against the database.
+ */
 public class Platform {
 
     private static Platform platform;
 
+    /**
+     * Retrieve the platform singleton.
+     * @return the platform database context
+     * @throws Exception if the database context cannot be established.
+     * If an Exception is thrown, this indicates that the database
+     * connection string could not be properly retrieved from Secrets Manager.
+     */
     public static Platform getInstance() throws Exception
     {
         if (platform == null)

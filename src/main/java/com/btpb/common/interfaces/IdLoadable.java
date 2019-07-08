@@ -8,7 +8,7 @@ package com.btpb.common.interfaces;
 public interface IdLoadable {
 
     /**
-     * Load the entity using the database ID provided.
+     * Loads the entity using the database ID provided.
      * @param id the ID to use when querying the database.
      */
     void load(int id);
