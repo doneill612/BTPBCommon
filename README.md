@@ -1,2 +1,0 @@
-# BTPBCommon
-BTPBuddy Entity Framework
