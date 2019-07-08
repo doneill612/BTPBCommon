@@ -3,6 +3,7 @@ package com.btpb.common;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
 import com.amazonaws.services.secretsmanager.model.*;
+import com.btpb.common.exceptions.DBReadException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class Platform {
      * If an Exception is thrown, this indicates that the database
      * connection string could not be properly retrieved from Secrets Manager.
      */
-    public static Platform getInstance() throws Exception
+    public static Platform getInstance() throws DBReadException
     {
         if (platform == null)
         {
@@ -35,7 +36,7 @@ public class Platform {
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new DBReadException(ex);
             }
         }
         return platform;

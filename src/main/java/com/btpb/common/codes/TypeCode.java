@@ -1,5 +1,6 @@
 package com.btpb.common.codes;
 
+import com.btpb.common.exceptions.BTPBException;
 import com.btpb.common.interfaces.DatabaseObject;
 import com.btpb.common.interfaces.KeyLoadable;
 
@@ -12,11 +13,11 @@ import com.btpb.common.interfaces.KeyLoadable;
  */
 public abstract class TypeCode implements DatabaseObject, KeyLoadable {
 
-    private int id;
-    private int order;
-    private boolean active;
-    private String title;
-    private String key;
+    protected int id;
+    protected int order;
+    protected boolean active;
+    protected String title;
+    protected String key;
 
     /**
      * Constructs a blank {@code TypeCode}.
@@ -30,7 +31,7 @@ public abstract class TypeCode implements DatabaseObject, KeyLoadable {
      * Constructs a {@code TypeCode} using an ID from the database.
      * @param id the ID to use when querying the database.
      */
-    public TypeCode(int id)
+    public TypeCode(int id) throws BTPBException
     {
         this.load(id);
     }
@@ -39,7 +40,7 @@ public abstract class TypeCode implements DatabaseObject, KeyLoadable {
      * Constructs a {@code TypeCode} using a key from the database
      * @param key the key to use when querying the database.
      */
-    public TypeCode(String key)
+    public TypeCode(String key) throws BTPBException
     {
         this.load(key);
     }
@@ -72,11 +73,11 @@ public abstract class TypeCode implements DatabaseObject, KeyLoadable {
         this.active = true;
     }
 
-    public abstract void load(int id);
+    public abstract void load(int id) throws BTPBException;
 
-    public abstract void load(String key);
+    public abstract void load(String key) throws BTPBException;
 
-    public abstract void save();
+    public abstract void save() throws BTPBException;
 
-    public abstract void remove();
+    public abstract void remove() throws BTPBException;
 }
